@@ -16,6 +16,25 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+//* books-search display------------------------
+router.get("/search/", async (req, res, next) => {
+  let name = req.query.name;
+  if (name) {
+    console.log(name);
+    try {
+      let result = await Books.find({name: new RegExp(name)});
+      if (result === undefined || result.length === 0) {
+        res.render("books-search", { results: result,search:name});
+      } else {
+        res.render("books-search", { results: result,search:name});
+      }
+    } catch (errors) {
+      req.flash("errors", errors.message);
+      res.render("books");
+    }
+  }
+});
+
 //*Add Display
 router.get("/add", (req, res, next) => {
   res.render("add", { name: "", author: "" });
@@ -27,22 +46,22 @@ router.get("/edit/:id", async (req, res, next) => {
     req.flash("errors", "No such id was provided");
     res.redirect("/books");
   } else {
-     try {
-          let result = await Books.findById(id);
-          if (result === undefined || result.length === 0) {
-          req.flash("errors", "No have a Book ID");
-          res.redirect("/books");
-          } else {
-          req.flash("success", "Get a book Success for the book id =" + id);
-          res.render("edit", {
-               id: result._id,
-               name: result.name,
-               author: result.author,
-          });
-          }
-     } catch (errors) {
-          req.flash("errors", errors.message);
-          res.redirect("/books");
+    try {
+      let result = await Books.findById(id);
+      if (result === undefined || result.length === 0) {
+        req.flash("errors", "No have a Book ID");
+        res.redirect("/books");
+      } else {
+        req.flash("success", "Get a book Success for the book id =" + id);
+        res.render("edit", {
+          id: result._id,
+          name: result.name,
+          author: result.author,
+        });
+      }
+    } catch (errors) {
+      req.flash("errors", errors.message);
+      res.redirect("/books");
     }
   }
 });

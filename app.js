@@ -8,7 +8,7 @@ var logger = require("morgan");
 const flash = require("express-flash");
 const session = require("express-session");
 
-var indexRouter = require("./routes/index");
+
 var booksRouter = require("./routes/books");
 
 var app = express();
@@ -33,8 +33,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/books", booksRouter);
+
+app.use("/", booksRouter);
 
 
 

@@ -38,7 +38,7 @@
                          <ul class="nav nav-pills">
                               <li class="nav nav-item"><h3>ตารางข้อมูล</h3></li>
                               <li class="nav nav-item ml-auto">
-                                   <a href="/books/add" class="nav-link btn btn-outline-primary">Add</a>
+                                   <a href="/add" class="nav-link btn btn-outline-primary">Add</a>
                               </li>
                          </ul>
                     </div>
@@ -62,8 +62,8 @@
                                         <td><%=results[i].name%></td>
                                         <td><%=results[i].author%></td>
                                         <td>
-                                             <a href="/books/edit/<%=results[i]._id%>" class="btn btn-outline-warning">Edit</a>
-                                             <a href="/books/delete/<%=results[i]._id%>" onclick="return confirm('Are you sure')" class="btn btn-outline-danger">Delete</a>
+                                             <a href="/edit/<%=results[i]._id%>" class="btn btn-outline-warning">Edit</a>
+                                             <a href="/delete/<%=results[i]._id%>" onclick="return confirm('Are you sure')" class="btn btn-outline-danger">Delete</a>
                                         </td>
                                    </tr>
                                    <%}%>

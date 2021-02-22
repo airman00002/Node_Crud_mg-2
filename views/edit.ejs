@@ -40,14 +40,14 @@
                          <ul class="nav nav-pills">
                               <li class="nav nav-item"><h3>ตารางข้อมูล</h3></li>
                               <li class="nav nav-item ml-auto">
-                                   <a href="/books" class="nav-link btn btn-outline-secondary">Back</a>
+                                   <a href="/" class="nav-link btn btn-outline-secondary">Back</a>
                               </li>
                          </ul>
                     </div>
 
                     <!--*  Body  -->
                     <div class="card-body">
-                        <form action="/books/update/<%=id%>" method="post" class="offset-3 col-6">
+                        <form action="/update/<%=id%>" method="post" class="offset-3 col-6">
                          <div class="form-group">
                               <label>Name</label>
                               <input type="text" name="name" placeholder="ชื่อหนังสือ" value="<%=name%>" class="form-control">
